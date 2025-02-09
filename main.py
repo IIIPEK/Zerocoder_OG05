@@ -14,6 +14,7 @@ pygame.display.set_icon(icon)
 target_image = pygame.image.load("images/apple.png")
 target_width = 80
 target_height = 80
+target_image = pygame.transform.scale(target_image, (target_width, target_height))
 target_x =ra(0, SCREEN_WIDTH - target_width)
 target_y = ra(0, SCREEN_HEIGHT - target_height)
 
@@ -23,10 +24,12 @@ color =(ra(0, 255), ra(0, 255), ra(0, 255))
 running = True
 
 while running:
+    screen.fill(color=color)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-
+    screen.blit(target_image, (target_x, target_y))
+    pygame.display.update()
 
 pygame.quit()
